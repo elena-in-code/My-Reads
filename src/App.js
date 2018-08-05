@@ -5,9 +5,30 @@ import HomePage from '../src/views/home_page/HomePage';
 import SearchPage from '../src/views/search_page/SearchPage';
 //styles
 import './App.css';
-// import * as BooksAPI from './BooksAPI'
+//API
+import * as BooksAPI from './BooksAPI';
 
 class App extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      books: []
+    }
+  }
+
+  componentDidMount() {
+    this.fetchFullBookCollection();
+  }
+
+  fetchFullBookCollection() {
+    BooksAPI.getAll()
+    .then((books)=> {
+      this.setState({
+        books: books
+      })
+    })
+  }
+
 
   render() {
     return (
