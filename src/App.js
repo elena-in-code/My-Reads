@@ -9,11 +9,13 @@ import './App.css';
 import * as BooksAPI from './BooksAPI';
 
 class App extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
-      books: []
+      books: [],
+      searchedBooks: []
     }
+    this.fetchFullBookCollection = this.fetchFullBookCollection.bind(this);
   }
 
   componentDidMount() {
@@ -29,16 +31,31 @@ class App extends React.Component {
     })
   }
 
+  changeShelf = (book, shelf) => {
+    BooksAPI.getAll().then((books) => {
+      this.setState({ books: books })
+    })
+    BooksAPI.update(book, shelf);
+  }
+
+  
+
 
   render() {
     return (
       <div className="app">
         <Route exact path="/" render={() => (
-          <HomePage/>)}>
+          <HomePage
+            changeShelf={this.changeShelf}
+            books={this.state.books}
+          />)}>
         </Route>
         
         <Route path="/search" render={() => (
-          <SearchPage/>)}>
+          <SearchPage 
+            changeShelf={this.changeShelf}
+            books={this.state.books}
+          />)}>
         </Route>
       </div>
     )
