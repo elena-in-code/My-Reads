@@ -17,28 +17,41 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    this.fetchFullBookCollection();
+    this.fetchShelfCollection();
   }
-
-  fetchFullBookCollection() {
+  
+  fetchShelfCollection() {
     BooksAPI.getAll()
     .then((books)=> {
       this.setState({
         books: books
       })
+      //console.log(books.shelf);
+      //console.log(books);
     })
   }
 
+  UpdateShelfCollection = (book, shelf) => {
+    BooksAPI.update(book, shelf)
+    .then(() => {
+      this.fetchShelfCollection();
+    })
+  }
 
   render() {
     return (
       <div className="app">
         <Route exact path="/" render={() => (
-          <HomePage/>)}>
+          <HomePage
+          books={this.state.books}
+          onChange={this.UpdateShelfCollection}
+          />)}>
         </Route>
         
         <Route path="/search" render={() => (
-          <SearchPage/>)}>
+          <SearchPage
+          books={this.state.books}
+          onChange={this.UpdateShelfCollection}/>)}>
         </Route>
       </div>
     )
