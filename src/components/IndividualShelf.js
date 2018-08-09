@@ -9,7 +9,7 @@ class IndividualShelf extends React.Component {
 
 updateIndividualBook = (book, shelf) => {
     this.props.onChangeShelf(book, shelf)
-    }
+}
 
     render() {
         return(
@@ -18,10 +18,10 @@ updateIndividualBook = (book, shelf) => {
               <div className="bookshelf-books">
                 <ol className="books-grid">
                   {this.props.books
-                  .map((book, key) => 
+                  .map((book, index) => 
                   (<IndividualBook 
                     book={book} 
-                    key={key} 
+                    key={index} 
                     onUpdate={(shelf) => {this.updateIndividualBook(book, shelf)}}
                     />))}
                 </ol>
