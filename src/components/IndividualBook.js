@@ -1,19 +1,19 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 //styles
 import '../App.css';
 
 class IndividualBook extends React.Component {
 
-change_bookShelf = (event) => {
+changeIndividualShelf = (event) => {
     event.preventDefault();
-    this.props.onUpdate(event.target.value)
+    this.props.onUpdate(event.target.value);
+    alert(`The book "${this.props.book.title}" has been moved to "${this.props.book.shelf}" shelf successfully!`)
 }
 
 renderSelector() {
     return(
         <div className="book-shelf-changer">
-            <select onChange={this.change_bookShelf} value={this.props.book.shelf}>
+            <select onChange={this.changeIndividualShelf} value={this.props.book.shelf}>
                 <option value="none" disabled>Move to...</option>
                 <option value="currentlyReading">Currently Reading</option>
                 <option value="wantToRead">Want to Read</option>
@@ -29,10 +29,13 @@ renderSelector() {
             <li>
                 <div className="book">
                 <div className="book-top">
-                    <div className="book-cover" style={{
-                    width: 128,
-                    height: 193,
-                    backgroundImage: this.props.book.imageLinks ? (`url(${this.props.book.imageLinks.thumbnail})`) : (`url(https://dummyimage.com/128x170/4f4f4f/ffffff.jpg&text=No+Book+Art)`) 
+                    <div className="book-cover" 
+                    style={{
+                        width: 128,
+                        height: 193,
+                        backgroundImage: this.props.book.imageLinks ? 
+                        (`url(${this.props.book.imageLinks.thumbnail})`) : 
+                        (`url(https://dummyimage.com/128x170/4f4f4f/ffffff.jpg&text=No+Book+Art)`) 
                     }}></div>
                     {this.renderSelector()}
                 </div>

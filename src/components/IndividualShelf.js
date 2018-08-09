@@ -7,7 +7,7 @@ import IndividualBook from './IndividualBook';
 
 class IndividualShelf extends React.Component {
 
-update_book = (book, shelf) => {
+updateIndividualBook = (book, shelf) => {
     this.props.onChangeShelf(book, shelf)
     }
 
@@ -18,11 +18,11 @@ update_book = (book, shelf) => {
               <div className="bookshelf-books">
                 <ol className="books-grid">
                   {this.props.books
-                  .map((book, index) => 
+                  .map((book, key) => 
                   (<IndividualBook 
                     book={book} 
-                    key={index} 
-                    onUpdate={(shelf) => {this.update_book(book, shelf)}}
+                    key={key} 
+                    onUpdate={(shelf) => {this.updateIndividualBook(book, shelf)}}
                     />))}
                 </ol>
               </div>
