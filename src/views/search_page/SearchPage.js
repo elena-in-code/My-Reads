@@ -39,7 +39,8 @@ class SearchPage extends React.Component {
     newShelf = ( books ) => {
         let myBooks = this.props.books;
         books.forEach( book => {
-            book.shelf = 'none'
+            book.shelf = 'none';
+            console.log(book);
             myBooks.forEach( myBook => {
                 if( book.id === myBook.id ) {
                     book.shelf = myBook.shelf

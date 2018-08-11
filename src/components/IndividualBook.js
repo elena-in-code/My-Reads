@@ -10,10 +10,11 @@ changeIndividualShelf = (event) => {
 }
 
 renderSelector() {
+    console.log(this.props.book.shelf);
     return(
         <div className="book-shelf-changer">
             <select onChange={this.changeIndividualShelf} value={this.props.book.shelf}>
-                <option value="none" disabled>Move to...</option>
+                <option disabled>Move to...</option>
                 <option value="currentlyReading">Currently Reading</option>
                 <option value="wantToRead">Want to Read</option>
                 <option value="read">Read</option>
@@ -24,7 +25,6 @@ renderSelector() {
 }
 
     render() {
-        //console.log(this.props.book.imageLinks);
         let currentImage = this.props.book.imageLinks ?
             this.props.book.imageLinks.thumbnail : '';
         return(
