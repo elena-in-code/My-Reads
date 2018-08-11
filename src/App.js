@@ -1,34 +1,31 @@
 import React from 'react';
 import { Route } from "react-router-dom";
+//API
+import * as BooksAPI from './BooksAPI';
 //components
 import HomePage from '../src/views/home_page/HomePage';
 import SearchPage from '../src/views/search_page/SearchPage';
 //styles
 import './App.css';
-//API
-import * as BooksAPI from './BooksAPI';
 
 class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      books: [], 
-      searchedBook: []
+      books: []
     }
   }
 
   componentDidMount() {
     this.fetchShelfCollection();
   }
-  
+
   fetchShelfCollection() {
     BooksAPI.getAll()
     .then((books)=> {
       this.setState({
         books: books
       })
-      //console.log(books.shelf);
-      //console.log(books);
     })
   }
 
@@ -37,16 +34,6 @@ class App extends React.Component {
     .then(() => {
       this.fetchShelfCollection();
     })
-  }
-
-  search = (query) => {
-    if(query) {
-      BooksAPI.search(query).then((searchedBook) => {
-        this.setState({ searchedBook })
-      })
-    } else {
-      this.setState({ searchedBook: [] })
-    }
   }
 
   render() {
@@ -61,8 +48,7 @@ class App extends React.Component {
         
         <Route path="/search" render={() => (
           <SearchPage
-          books={this.state.searchedBook}
-          onSearch={ this.search }
+          books={this.state.books}
           onChange={this.UpdateShelfCollection}/>)}>
         </Route>
       </div>

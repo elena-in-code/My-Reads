@@ -1,5 +1,24 @@
 # MyReads Project
 
+project part of the [**Front-End Web Developer Nanodegree Udacity**](https://eu.udacity.com/course/front-end-web-developer-nanodegree--nd001).
+
+### Launch the project:
+* Clone the repo or download the Zip Files into your pc
+* install all project dependencies with `npm install`
+* start the development server with `npm start`
+
+### Acknowledgments:
+Thanks to: <br/>
+https://github.com/s1m0n3ak1/my-reads-udacity<br/>
+https://github.com/garcrich/MyReads-A-Book-Tracking-App <br/>
+https://github.com/sagarchoudhary96/My-Reads <br/>
+https://github.com/LolaGL/myReads <br/>
+https://github.com/Syknapse<br/>
+for sharing their code for the rest to get inspiration <br/>
+<hr>
+
+## Udacity info about the project:
+
 This is the starter template for the final assessment project for Udacity's React Fundamentals course. The goal of this template is to save you time by providing a static example of the CSS and HTML markup that may be used, but without any of the React code that is needed to complete the project. If you choose to start with this template, your job will be to add interactivity to the app by refactoring the static code in this template.
 
 Of course, you are free to start this project from scratch if you wish! Just be sure to use [Create React App](https://github.com/facebookincubator/create-react-app) to bootstrap the project.

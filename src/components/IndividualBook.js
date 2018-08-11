@@ -7,7 +7,6 @@ class IndividualBook extends React.Component {
 changeIndividualShelf = (event) => {
     event.preventDefault();
     this.props.onUpdate(event.target.value);
-    alert(`The book "${this.props.book.title}" has been moved to "${this.props.book.shelf}" shelf successfully! 👍🏽`)
 }
 
 renderSelector() {
@@ -25,7 +24,9 @@ renderSelector() {
 }
 
     render() {
-        console.log(this.props.key);
+        //console.log(this.props.book.imageLinks);
+        let currentImage = this.props.book.imageLinks ?
+            this.props.book.imageLinks.thumbnail : '';
         return(
             <li>
                 <div className="book">
@@ -34,10 +35,9 @@ renderSelector() {
                     style={{
                         width: 128,
                         height: 193,
-                        backgroundImage: this.props.book.imageLinks.thumbnail ? 
-                        (`url(${this.props.book.imageLinks.thumbnail})`) : 
-                        (`url(https://dummyimage.com/128x170/4f4f4f/ffffff.jpg&text=No+Book+Art)`) 
-                    }}></div>
+                        backgroundImage: `url("${currentImage}")` 
+                    }}>
+                    </div>
                     {this.renderSelector()}
                 </div>
                 <div className="book-title">{this.props.book.title}</div>

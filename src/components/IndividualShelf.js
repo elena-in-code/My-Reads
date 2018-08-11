@@ -11,24 +11,24 @@ updateIndividualBook = (book, shelf) => {
     this.props.onChangeShelf(book, shelf)
 }
 
-    render() {
-        return(
-            <div className="bookshelf">
-              <h2 className="bookshelf-title">{this.props.ShelfName}</h2>
-              <div className="bookshelf-books">
-                <ol className="books-grid">
-                  {this.props.books
-                  .map((book, index) => 
-                  (<IndividualBook 
-                    book={book} 
-                    key={index} 
-                    onUpdate={(shelf) => {this.updateIndividualBook(book, shelf)}}
-                    />))}
-                </ol>
-              </div>
-            </div>
-          ) 
-    }
+  render() {
+    return(
+      <div className="bookshelf">
+        <h2 className="bookshelf-title">{this.props.ShelfName}</h2>
+        <div className="bookshelf-books">
+          <ol className="books-grid">
+            {this.props.books
+            .map((book, key) => (
+            <IndividualBook 
+              book={book} 
+              key={key} 
+              onUpdate={(shelf) => {this.updateIndividualBook(book, shelf)}}/>
+            ))}
+          </ol>
+        </div>
+      </div>
+    ) 
+  }
 }
 
 export default IndividualShelf;
